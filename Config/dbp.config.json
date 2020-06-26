@@ -1,0 +1,10 @@
+{
+    
+    "config" :{
+    "user": "postgres",
+    "database": "postgres", 
+    "password": "postgres", 
+    "port": 5432
+   
+  }
+}
