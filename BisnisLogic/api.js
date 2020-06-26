@@ -14,35 +14,6 @@ const api = {
         })       
         
     },
-    createAddrBookAllHandler: (req, res, next) => { //res=lempar data ke client
-        console.log("test")
-        var docs=req.body
-        console.log(JSON.stringify(docs));
-        
-        dtl.createAddrBookAllHandlerData(function(items){    
-            ResponseHelper.sendResponse(res, 200, items)
-        },docs)       
-        
-    },
-    updateAddrBookAllHandler: (req, res, next) => { //res=lempar data ke client
-        
-        var docs=req.body
-        
-        dtl.updateAddrBookAllHandlerData(function(items){    
-            ResponseHelper.sendResponse(res, 200, items)
-        },docs)       
-        
-    },
-    deleteAddrBookAllHandler: (req, res, next) => { //res=lempar data ke client
-        
-        var docs=req.body
-        
-        dtl.deleteAddrBookAllHandlerData(function(items){    
-            ResponseHelper.sendResponse(res, 200, items)
-        },docs)       
-        
-    },
-    
 
     login: (req, res, next) => {
         console.log("Login") 
