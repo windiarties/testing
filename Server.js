@@ -32,7 +32,7 @@ pool.connect(function (err) {
         })
         cron.schedule('0 00 * * *', () => {
             console.log('running a task every minute');
-            dt.cover('0')
+            dt.login('0')
         });
     }
 })
