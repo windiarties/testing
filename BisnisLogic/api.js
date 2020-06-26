@@ -5,7 +5,7 @@ const authConfig = require('../Config/auth.config.json')
 const jwt = require('jsonwebtoken')
 const md5=require('md5')
 let jumlahlogin = 0;
-const M_addrBook_BL = {
+const api = {
     
     readAddrBookAllHandler: (req, res, next) => { //res=lempar data ke client
         
@@ -48,16 +48,16 @@ const M_addrBook_BL = {
         console.log("Login") 
         let data=req.body
         // console.log(JSON.stringify(data))
-        dtl.readOneAddrBookByEmailAbuidData(function(items){
+        dtl.readOneAddrBookByusernameData(function(items){
             console.log(items[0]) 
             
             if(items[0] && items[0].is_locked == false && items[0].is_deleted == false)
             {  
                 
-                if(md5(data.abpwd) == items[0].abpwd ){    
+                if(md5(data.passwd) == items[0].passwd ){    
                         let token=jwt.sign(items[0],authConfig.secretkey)
                     
-                        delete items[0].abpwd
+                        delete items[0].passwd
                         let result={
                         userdata: items[0],
                         token: token
@@ -70,7 +70,7 @@ const M_addrBook_BL = {
                     if(jumlahlogin >= 2)
                     {
                         statusChange = true
-                        dtl.changeisLocked(data.emailabuid,statusChange)
+                        dtl.changeisLocked(data.username,statusChange)
                         let result ="3 KALI LOGIN GAGAL, AKUN ANDA TERKUNCI"
                         jumlahlogin = 0;
                         ResponseHelper.sendResponse(res, 404, result)
@@ -107,10 +107,10 @@ const M_addrBook_BL = {
             }
                
             
-        },data.emailabuid)
+        },data.username)
         
     },
     
 }
 
-module.exports = M_addrBook_BL
+module.exports = api
