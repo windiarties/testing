@@ -1,8 +1,8 @@
 # Testing README
 
 #### How to run application on development environment
-This is only Backend files.
-Dev : Anies Windi
+This is only Backend files
+#### Dev : Anies Windi
 
 
 On 1st console, type this command
