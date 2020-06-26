@@ -1,7 +1,9 @@
 # Testing README
 
 #### How to run application on development environment
-You need two opened console to run this apps on development environment.
+This is only Backend files.
+Dev : Anies Windi
+
 
 On 1st console, type this command
 ```
