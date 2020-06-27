@@ -10,7 +10,7 @@ const dt = {
             if (err) {
                 data = err;
             }
-            client.query('SELECT MAX(id) as id FROM artist', function (err, result) {
+            client.query('SELECT MAX(id) as id FROM account', function (err, result) {
 
                 done()
                 if (err) {
@@ -19,7 +19,7 @@ const dt = {
                     data = result.rows
                 }
                 callback(data)
-                // console.log("ini data :" + JSON.stringify(data))
+                console.log("ini data :" + JSON.stringify(data))
 
             })
 
