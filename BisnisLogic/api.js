@@ -14,11 +14,10 @@ const api = {
         })       
         
     },
-
     login: (req, res, next) => {
         console.log("Login") 
         let data=req.body
-        // console.log(JSON.stringify(data))
+        
         dtl.readOneAddrBookByusernameData(function(items){
             console.log(items[0]) 
             
@@ -76,8 +75,6 @@ const api = {
                 ResponseHelper.sendResponse(res, 404, result)
                 
             }
-               
-            
         },data.username)
         
     },
