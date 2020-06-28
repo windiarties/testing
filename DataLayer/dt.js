@@ -4,7 +4,7 @@ var DB = new pg.Pool(DatabaseConnection.config);
 const request = require('request');
 
 const dt = {
-    readOneAddrBookByusernameData: (callback) => { //res=lempar data ke client    
+    readData: (callback) => { //res=lempar data ke client    
         DB.connect(function (err, client, done) {
             var data = ''
             if (err) {
