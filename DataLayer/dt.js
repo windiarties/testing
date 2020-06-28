@@ -1,7 +1,6 @@
 const pg = require('pg')
 const DatabaseConnection = require('../Config/dbp.config.json')
-var DB = new pg.Pool(DatabaseConnection.config);
-const request = require('request');
+var DB = new pg.Pool(DatabaseConnection.config)
 
 const dt = {
     readData: (callback) => { //res=lempar data ke client    
@@ -10,7 +9,7 @@ const dt = {
             if (err) {
                 data = err;
             }
-            client.query('SELECT MAX(id) as id FROM account', function (err, result) {
+            client.query('SELECT * FROM account', function (err, result) {
 
                 done()
                 if (err) {
