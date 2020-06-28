@@ -7,9 +7,9 @@ const md5=require('md5')
 let jumlahlogin = 0;
 const api = {
     
-    readAddrBookAllHandler: (req, res, next) => { //res=lempar data ke client
+    read: (req, res, next) => { //res=lempar data ke client
         
-        dtl.readAddrBookAllHandlerData(function(items){    
+        dtl.readData(function(items){    
             ResponseHelper.sendResponse(res, 200, items)
         })       
         
@@ -18,7 +18,7 @@ const api = {
         console.log("Login") 
         let data=req.body
         
-        dtl.readData(function(items){
+        dtl.readData2(function(items){
             console.log(items[0]) 
             
             if(items[0] && items[0].is_locked == false && items[0].is_deleted == false)
