@@ -18,7 +18,7 @@ const api = {
         console.log("Login") 
         let data=req.body
         
-        dtl.readOneAddrBookByusernameData(function(items){
+        dtl.readData(function(items){
             console.log(items[0]) 
             
             if(items[0] && items[0].is_locked == false && items[0].is_deleted == false)
