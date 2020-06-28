@@ -13,71 +13,71 @@ const api = {
             ResponseHelper.sendResponse(res, 200, items)
         })       
         
-    },
-    login: (req, res, next) => {
-        console.log("Login") 
-        let data=req.body
+    }
+    // login: (req, res, next) => {
+    //     console.log("Login") 
+    //     let data=req.body
         
-        dtl.readData2(function(items){
-            console.log(items[0]) 
+    //     dtl.readData2(function(items){
+    //         console.log(items[0]) 
             
-            if(items[0] && items[0].is_locked == false && items[0].is_deleted == false)
-            {  
+    //         if(items[0] && items[0].is_locked == false && items[0].is_deleted == false)
+    //         {  
                 
-                if(md5(data.passwd) == items[0].passwd ){    
-                        let token=jwt.sign(items[0],authConfig.secretkey)
+    //             if(md5(data.passwd) == items[0].passwd ){    
+    //                     let token=jwt.sign(items[0],authConfig.secretkey)
                     
-                        delete items[0].passwd
-                        let result={
-                        userdata: items[0],
-                        token: token
-                        }
-                     jumlahlogin = 0;
-                        ResponseHelper.sendResponse(res, 200, result)
-                        //let result="Berhasil Login"
-                }else{
+    //                     delete items[0].passwd
+    //                     let result={
+    //                     userdata: items[0],
+    //                     token: token
+    //                     }
+    //                  jumlahlogin = 0;
+    //                     ResponseHelper.sendResponse(res, 200, result)
+    //                     //let result="Berhasil Login"
+    //             }else{
                     
-                    if(jumlahlogin >= 2)
-                    {
-                        statusChange = true
-                        dtl.changeisLocked(data.username,statusChange)
-                        let result ="3 KALI LOGIN GAGAL, AKUN ANDA TERKUNCI"
-                        jumlahlogin = 0;
-                        ResponseHelper.sendResponse(res, 404, result)
-                    }
-                    else{
-                        jumlahlogin++;
-                        let result="Salah Username atau Password"
-                        ResponseHelper.sendResponse(res, 404, result)
-                    }      
+    //                 if(jumlahlogin >= 2)
+    //                 {
+    //                     statusChange = true
+    //                     dtl.changeisLocked(data.username,statusChange)
+    //                     let result ="3 KALI LOGIN GAGAL, AKUN ANDA TERKUNCI"
+    //                     jumlahlogin = 0;
+    //                     ResponseHelper.sendResponse(res, 404, result)
+    //                 }
+    //                 else{
+    //                     jumlahlogin++;
+    //                     let result="Salah Username atau Password"
+    //                     ResponseHelper.sendResponse(res, 404, result)
+    //                 }      
                     
-                }
+    //             }
                 
-            } 
-            else if(items[0] && items[0].is_locked == true && items[0].is_deleted == false){
+    //         } 
+    //         else if(items[0] && items[0].is_locked == true && items[0].is_deleted == false){
                 
-                    // console.log('masih dalam status no')
-                jumlahlogin=0;
-                let result ="Akun Anda Terkunci"
-                ResponseHelper.sendResponse(res,404,result)
+    //                 // console.log('masih dalam status no')
+    //             jumlahlogin=0;
+    //             let result ="Akun Anda Terkunci"
+    //             ResponseHelper.sendResponse(res,404,result)
             
-            }
-            else if (items[0] && items[0].is_deleted == true)
-            {
-                jumlahlogin=0;
-                let result ="Akun Anda Tidak Aktif"
-                ResponseHelper.sendResponse(res,404,result)
-            }
-            else
-            {
-                jumlahlogin=0;
-                let result="Salah Username atau Password"
-                ResponseHelper.sendResponse(res, 404, result)
+    //         }
+    //         else if (items[0] && items[0].is_deleted == true)
+    //         {
+    //             jumlahlogin=0;
+    //             let result ="Akun Anda Tidak Aktif"
+    //             ResponseHelper.sendResponse(res,404,result)
+    //         }
+    //         else
+    //         {
+    //             jumlahlogin=0;
+    //             let result="Salah Username atau Password"
+    //             ResponseHelper.sendResponse(res, 404, result)
                 
-            }
-        },data.username)
+    //         }
+    //     },data.username)
         
-    },
+    // },
     
 }
 
