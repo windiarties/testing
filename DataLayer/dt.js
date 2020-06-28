@@ -24,6 +24,28 @@ const dt = {
 
         })
 
+    },
+    readData2: (callback) => { //res=lempar data ke client    
+        DB.connect(function (err, client, done) {
+            var data = ''
+            if (err) {
+                data = err;
+            }
+            client.query('SELECT * FROM account', function (err, result) {
+
+                done()
+                if (err) {
+                    data = err;
+                } else {
+                    data = result.rows
+                }
+                callback(data)
+                console.log("ini data :" + JSON.stringify(data))
+
+            })
+
+        })
+
     }
 }
 
