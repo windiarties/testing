@@ -31,7 +31,7 @@ const dt = {
             if (err) {
                 data = err;
             }
-            client.query('SELECT * FROM account', function (err, result) {
+            client.query('SELECT * FROM account where username=($1)', function (err, result) {
 
                 done()
                 if (err) {
