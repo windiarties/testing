@@ -14,7 +14,7 @@ module.exports = {
                     
                     ResponseHelper.sendResponse(res, 403, 'You are not authorized')
                 } else {
-                    // console.log(decoded)
+                    console.log(decoded)
                     req.userdata = decoded
                     next()
                 }
