@@ -14,6 +14,7 @@ const api = {
         })
 
     },
+    
     login: (req, res, next) => { //res=lempar data ke client
         let data = req.body
         dtl.readData2(function (items) {
