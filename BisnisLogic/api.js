@@ -12,34 +12,39 @@ const api = {
         })
 
     },
-    login: (req, res, next) => { //res=lempar data ke client
-        console.log("test web...")
+    login: (req, res, next) => {
+        console.log("test web")
         let data = req.body
+
         dtl.readUserData(function (items) {
-            console.log("data items : " + JSON.stringify(items[0]))
+            console.log("data items..."+ JSON.stringify(items[0]))
 
             if (items[0]) {
                 console.log(jwt.sign(items[0], authConfig.secretkey))
 
-                if (bcrypt.compareSync(data.password, items[0].password)) {
+                if (bcrypt.compareSync(data.password,items[0].password)) {
                     let token = jwt.sign(items[0], authConfig.secretkey)
+
                     delete items[0].password
                     let result = {
                         userdata: items[0],
                         token: token
                     }
-                    ResponseHelper.sendResponse(res, 401, result)
-                }
+                    // let result="Berhasil Login"
+                    ResponseHelper.sendResponse(res, 200, result)
+                } 
                 else {
-                    let result = "Wrong Password"
+                    let result = "Wrong password"
                     ResponseHelper.sendResponse(res, 404, result)
                 }
-            }
+            } 
             else {
-                let result = "User Not Found"
+                let result = "User not Found"
                 ResponseHelper.sendResponse(res, 404, result)
             }
-        },data.username)
+
+        })
+
     }
 }
 
