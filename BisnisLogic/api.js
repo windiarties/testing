@@ -13,6 +13,13 @@ const api = {
             ResponseHelper.sendResponse(res, 200, items)
         })       
         
+    },
+    login: (req, res, next) => { //res=lempar data ke client
+        
+        dtl.readData2(function(items){    
+            ResponseHelper.sendResponse(res, 200, items)
+        })       
+        
     }
     // login: (req, res, next) => {
     //     console.log("Login") 
