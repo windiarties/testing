@@ -41,6 +41,35 @@ const dt = {
             })
         })
     },
+    createUserData: (callback, docs) => { //res=lempar data ke client      
+        DB.connect(function (err, client, done) {
+            var data = ''
+            if (err) {
+
+                data = err;
+            }
+
+            var salt = bcrypt.genSaltSync(10);
+            let pashash = bcrypt.hashSync(docs.password, salt);
+
+            const query = {
+                text: 'INSERT INTO account(username,password) VALUES($1,$2)',
+                values: [docs.username, pashash],
+            }
+            client.query(query, function (err, result) {
+                done()
+                if (err) {
+                    data = err;
+                } else {
+                    data = result.rows
+                }
+                callback(data)
+            })
+
+
+        })
+
+    }
 }
 
 module.exports = dt
