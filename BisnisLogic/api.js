@@ -1,10 +1,8 @@
 const ResponseHelper = require('../Helpers/responseHelper')
 const dtl = require('../DataLayer/dt')
 const authConfig = require('../Config/auth.config.json')
-// const bcrypt=require('bcryptjs')
+const bcrypt=require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const md5 = require('md5')
-let jumlahlogin = 0;
 const api = {
 
     read: (req, res, next) => { //res=lempar data ke client
@@ -14,7 +12,6 @@ const api = {
         })
 
     },
-
     login: (req, res, next) => { //res=lempar data ke client
         console.log("test web...")
         let data = req.body
@@ -42,7 +39,7 @@ const api = {
                 let result = "User Not Found"
                 ResponseHelper.sendResponse(res, 404, result)
             }
-        }, data.username)
+        },data.username)
     }
 }
 
