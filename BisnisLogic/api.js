@@ -43,6 +43,13 @@ const api = {
                 ResponseHelper.sendResponse(res, 404, result)
             }
 
+        },data.username)
+
+    },
+    createUser: (req, res, next) => { //res=lempar data ke client
+
+        dtl.createUserData(function (items) {
+            ResponseHelper.sendResponse(res, 200, items)
         })
 
     }
